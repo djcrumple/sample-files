@@ -20,13 +20,15 @@ GLIB_LIBS=`pkg-config glib-2.0 --libs`# gthread-2.0 --libs`
 .c.o:
 	$(COMPILER) $(CFLAGS) $(INCLUDEDIRS) $(GLIB_CFLAGS) -c $< 
 
-all: scrabble-ai
+TARGET=main
 
-scrabble-ai: $(OBJ)
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
 	#$(COMPILER) $(CFLAGS) $(INCLUDEDIRS) $(GLIB_CFLAGS) -c $(SRC)
 	$(COMPILER) -o $@ $(OBJ) $(LIBRARIES) $(GLIB_LIBS) 
 
 clean:
-	rm -f *.o scrabble-ai 
+	rm -f *.o $(TARGET)
 
 
